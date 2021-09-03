@@ -22,6 +22,10 @@
       <router-link to="/chapter07">
         第7章 最佳实践
       </router-link>
+      <router-link to="/chapter99">
+        第X章 实践
+      </router-link>
+      
     </div>
     <div class="app-content">
       <router-view />

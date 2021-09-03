@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h1>第2章 Schema和类型</h1>
+    <h1>第2章 后端Schema和类型</h1>
     <ul>
       <li>GraphQL是强数据类型</li>
       <li>GraphQL客户端层面一般会提供校验机制，可以在编译阶段执行语法检查</li>
-
+      <li>Schema是后端GraphQL的定义语法文件，如果是java+springboot，文件在src/main/resources/graphql/types.graphqls文件中定义</li>
     </ul>
     <h2>2.1. 类型系统（Type System）</h2>
     <ul>
       <li>GraphQL的查询语言基本上就是后端GraphQL定义对象的映射
-        需要查询
+        前端查询的写法如下
         <pre>
     {
         <strong>abc</strong>{
-        <strong class="yellow">name</strong>,
-        <strong class="yellow">age</strong>
+          <strong class="yellow">name</strong>,
+          <strong class="yellow">age</strong>
       }
     }
         </pre>
@@ -22,8 +22,8 @@
         <pre>
     {
         <strong>"abc"</strong>:{
-        <strong class="yellow">"name"</strong>:"xx",
-        <strong class="yellow">"age"</strong>:20
+           <strong class="yellow">"name"</strong>:"xx",
+           <strong class="yellow">"age"</strong>:20
       }
     }
         </pre>
@@ -41,13 +41,19 @@
       <li>字段支持传参，风格类似语法严谨的强类型语言，如java</li>
       <li>字段的参数支持默认值</li>
     </ul>
+    后端Schema中定义了一个MUser的对象类型
     <pre>
-    <strong class="green">//下面定义了一个MUser的对象类型</strong>
+    #用户对象
     type MUser{
+      #用户ID <strong>//注释，可以在使用查询工具时可以方便的展示字段的含义</strong>
       id: String! <strong class="green">//!表示非空</strong>
+      #用户名字
       name: String!
+      #性别
       gender: String
+      #年龄
       age : Int
+      #称号
       titles: [String!]! <strong class="green">//定义了包含非空字符串元素的非空数组</strong>
       <strong>job(type: Integer=1) : Job</strong><strong class="green">//定义了一个job字段，有一个type参数，默认值是1，注意这个job是字段而不是方法/函数</strong>
     }
@@ -62,8 +68,8 @@
     </pre>
     例如有如下的查询
     <pre>
-    muser{
-      name,
+    findFirstUser {
+      name
       hello("马超")
     }
     </pre>

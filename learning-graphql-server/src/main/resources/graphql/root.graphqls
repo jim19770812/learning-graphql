@@ -1,0 +1,48 @@
+#查询的入口，所有查询都要从Query类型里定义
+type Query {
+    #按照姓名查询用户
+    user(usrName: String): MUser!
+    #首个用户
+    firstUser:MUser #不能加括号，加上会报错
+    # 工作列表
+    jobs : [Job!]!
+    #工作名字列表
+    # jobNames : [String!]
+}
+
+#定义的schema入口，里面只有query和mutation元素
+schema{
+    query : Query
+}
+
+#添加用户
+input TAddUser{
+    #用户名
+    name: String!
+    #性别
+    gender: String!
+    #年龄
+    age: Int!
+}
+
+#更新用户对象
+input TUpdateUser{
+    #ID
+    id: String!
+    #姓名
+    name: String
+    #性别
+    gender: String
+    #年龄
+    age: Int
+    #入伙时间
+    joinDate: String @date
+    titles: [String!]
+}
+
+#变更
+type Mutation{
+    #添加用户
+    addUser(user: TAddUser): MUser!
+    updateUser(user: TUpdateUser!): MUser!
+}

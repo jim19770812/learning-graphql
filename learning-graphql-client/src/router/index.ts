@@ -35,7 +35,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/chapter07',
     name: 'chapter07',
     component: ()=> import(/* webpackChunkName: "chapters" */ '../views/chapter07-最佳实践.vue')
+  },
+  {
+    path: '/chapter99',
+    name: 'chapter99',
+    component: ()=> import(/* webpackChunkName: "chapters" */ '../views/chapter99-实践.vue')
   }
+
 ]
 
 const router = createRouter({

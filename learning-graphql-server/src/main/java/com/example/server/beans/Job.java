@@ -22,5 +22,5 @@ public class Job {
     private String name;
     @Field("job_salary")
     @Accessors(chain = true)
-    private Double jobSalary;
+    private Double salary;
 }

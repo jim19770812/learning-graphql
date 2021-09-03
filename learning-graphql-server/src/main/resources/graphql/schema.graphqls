@@ -1,0 +1,26 @@
+#用户对象
+type MUser {
+    #用户ID
+    id: String,
+    #姓名
+    name: String!,
+    # 性别
+    gender: String!,
+    #年龄
+    age: Int!,
+    #入伙时间
+    joinDate: String,
+    #称号
+    titles: [String!]!
+    #first():MUser
+    #根据名字获取工作，在对应的springboot-graphql后台方法中会映射成一个getter方法，注意这个getter方法的首个参数一定当前类的实例（本例中是MUser）
+    job(name : String): Job
+}
+
+#工作
+type Job {
+    #工作名称
+    name : String!
+    #薪水
+    salary : Float
+}

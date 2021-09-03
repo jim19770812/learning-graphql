@@ -1,30 +1,45 @@
 package com.example.server.resolvers;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.example.server.beans.Job;
 import com.example.server.beans.MUser;
-import org.springframework.stereotype.Component;
+import com.google.common.collect.Lists;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public class QueryResolver implements GraphQLQueryResolver {
-    private final MUserResolver userResolver;
-    private final JobResolver jobResolver;
-    public QueryResolver(MUserResolver userResolver, JobResolver jobResolver){
-        this.userResolver=userResolver;
-        this.jobResolver=jobResolver;
-    }
+    @Resource
+    private MUserResolver userResolver;
 
     public MUser user(String usrName){
-        return this.userResolver.user(usrName);
+        MUser result=new MUser();
+        result.setName("jim");
+        result.setAge(30);
+        result.setId("1");
+        result.setGender("male");
+        result.setTitles(Lists.newArrayList("武将"));
+        return result;
     }
 
-    public List<MUser> users(){
-        return this.userResolver.users();
+    public MUser firstUser(){
+        MUser result=new MUser();
+        result.setName("jim");
+        result.setAge(30);
+        result.setId("1");
+        result.setGender("male");
+        result.setTitles(Lists.newArrayList("武将"));
+        return result;
     }
 
-    public Job job(String name){
-        return this.jobResolver.job(name);
+    public List<Job> jobs(){
+        Job job=new Job();
+        job.setName("武将");
+        job.setSalary(20000.0);
+        return Lists.newArrayList(job);
     }
 }
