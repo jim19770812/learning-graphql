@@ -39,6 +39,7 @@ input TUpdateUser{
     age: Int
     #入伙时间
     joinDate: DateTime
+    #称号
     titles: [String!]
 }
 
