@@ -518,7 +518,7 @@
   <h3>99.7.2 前端调用变更</h3>
   <div>
     <button @click="btn99_7_2_addUser">调用服务器查询的例子</button>
-    <div>查询结果：{{state.out99_7_3}}</div>
+    <div>查询结果：{{state.out99_7_2}}</div>
   </div>
 </template>
 
@@ -536,7 +536,7 @@ export default {
     const state = reactive({
       out99_7_1_1:'',
       out99_7_1_2:'',
-      out99_7_3:''
+      out99_7_2:''
     })
     /**
      * 不带参数查询
@@ -587,6 +587,27 @@ export default {
      */
     const btn99_7_2_addUser=()=>{
       console.log("btn99_7_2_addUser")
+      let userName="jim"
+      let data ={
+        query:`
+          mutation($name: String!){
+            addUser(user:{
+              name:$name,
+              gender:"男",
+              age: 20
+            }) {
+              id, name, gender, joinDate
+            }
+          }        `,
+        variables:{
+          "name": userName
+        }
+      }
+      axios.post('/graphql', data).then((result) => {
+        console.log(result.data)
+        state.out99_7_2=result.data
+        console.log("data:", JSON.stringify(result.data))
+      });
     }
     return {
       state,
