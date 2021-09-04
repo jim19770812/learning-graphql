@@ -7,7 +7,7 @@ module.exports = {
       inline: true, // 控制是否热更新
       proxy: {
         '/xhr': {
-          target: 'http://127.0.0.1:8080/graphql',
+          target: 'http://127.0.0.1:8080',
           changeOrigin: true,
           secure: false,
           ws: true, // 代理转发 websockets
@@ -16,5 +16,8 @@ module.exports = {
           }
         }
       },
-    }
+    },
+    configureWebpack: {
+      devtool: 'source-map',
+    },
   }

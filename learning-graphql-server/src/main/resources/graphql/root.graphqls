@@ -1,3 +1,5 @@
+scalar DateTime
+
 #查询的入口，所有查询都要从Query类型里定义
 type Query {
     #按照姓名查询用户
@@ -36,7 +38,7 @@ input TUpdateUser{
     #年龄
     age: Int
     #入伙时间
-    joinDate: String @date
+    joinDate: DateTime
     titles: [String!]
 }
 

@@ -9,7 +9,7 @@ type MUser {
     #年龄
     age: Int!,
     #入伙时间
-    joinDate: String,
+    joinDate: DateTime,
     #称号
     titles: [String!]!
     #first():MUser

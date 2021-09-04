@@ -1,5 +1,6 @@
 package com.example.server.resolvers;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ public class QueryResolver implements GraphQLQueryResolver {
         result.setAge(30);
         result.setId("1");
         result.setGender("male");
+        result.setJoinDate(new Date());
         result.setTitles(Lists.newArrayList("武将"));
         return result;
     }
@@ -32,6 +34,7 @@ public class QueryResolver implements GraphQLQueryResolver {
         result.setAge(30);
         result.setId("1");
         result.setGender("male");
+        result.setJoinDate(new Date());
         result.setTitles(Lists.newArrayList("武将"));
         return result;
     }
